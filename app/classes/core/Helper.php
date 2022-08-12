@@ -40,7 +40,10 @@ class Helper {
 
         // close session .. because: fuck off!
         session_write_close();
-        session_regenerate_id( true );
+        if(session_status() == PHP_SESSION_ACTIVE){
+            
+            session_regenerate_id( true );
+        }
 
         header( 'Location: ' . $url );
         die;

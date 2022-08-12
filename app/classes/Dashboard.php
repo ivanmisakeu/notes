@@ -8,7 +8,7 @@ class Dashboard{
 
     public static function actionIndex() {
 
-        Template::render( 'dashboard' );
+        Template::generate_front( 'dashboard' );
     }
     
 }

@@ -27,6 +27,9 @@ class Template{
     /** @var array */
     public static $BREADCRUMBS = array();
     
+    /** @var string */
+    public static $HTML_CONTENT;
+    
     /**
      * Assign variable to template
      * 
@@ -166,4 +169,23 @@ class Template{
         }
     }
 
+    /**
+     * 
+     * @param string $path
+     */
+    public static function generate_front( string $path ){
+        
+        if(class_exists( 'Admin' ) ){
+            
+            self::$HTML_CONTENT = self::fetch( $path ); 
+        }
+    }
+    /** 
+     * Render content for page 
+     */
+    public static function renderHTMLContent(){
+        
+        echo self::$HTML_CONTENT;
+    }
+    
 }

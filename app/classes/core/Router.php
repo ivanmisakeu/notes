@@ -7,6 +7,9 @@ if ( !defined( 'APP_VERSION' ) ) {
 class Router {
 
     /** @const string */
+    const DEFAULT_FRONT_CONTROLLER = 'dashboard';
+    
+    /** @const string */
     const DEFAULT_ADMIN_CONTROLLER = 'admin';
     
     /** @var array */
@@ -62,20 +65,38 @@ class Router {
         }
 
         // basic tenant routing.. 
+        
+        // check if user is signed in
+        User::checkLogged( false );
+            
         if ( isset( self::$ROUTES[ 0 ] ) && !defined( 'ADMIN_DIR' ) ) {
             
-            $tenant = Tenant::getByName( self::$ROUTES[ 0 ] );
-            
-            if( $tenant && $tenant['active'] == Tenant::TENANT_ACTIVE ){
-                App::$TEENANT = self::$ROUTES[ 0 ];
+            // do the magic work powerfull wizard..
+            if ( count( self::$ROUTES ) >= 2  &&
+                    method_exists( ucfirst( self::$ROUTES[ 0 ] ), 'action' . ucfirst( self::$ROUTES[ 1 ] ) ) ) {
+                
+                ucfirst( self::$ROUTES[ 0 ] )::{'action' . ucfirst( self::$ROUTES[ 1 ] )}();
             }
+            elseif( count( self::$ROUTES ) == 1 && 
+                method_exists( ucfirst( self::$ROUTES[ 0 ] ), 'actionIndex' ) ) {
+
+                ucfirst( self::$ROUTES[ 0 ] )::actionIndex();
+            }
+            else{
+                
+                ucfirst( self::DEFAULT_FRONT_CONTROLLER )::actionIndex();
+            }
+        }
+        else if( !isset( self::$ROUTES[ 0 ] )  && !defined( 'ADMIN_DIR' ) ){
+            
+            ucfirst( self::DEFAULT_FRONT_CONTROLLER )::actionIndex();
         }
 
         // admin routes..
         if ( defined( 'ADMIN_DIR' ) ) {
 
             // check if user is signed in
-            User::checkLogged();
+            User::checkLogged( true );
             
             // initialize admin menu
             Admin::menuInit();

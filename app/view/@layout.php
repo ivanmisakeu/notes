@@ -8,13 +8,17 @@
         
         <?php if( !Template::$FULL_VIEW ): ?><div class="main-container"><?php endif; ?>
 
-            <?= Dashboard::actionIndex(); ?>
+            <!-- main content -->
+            <?php Template::renderHTMLContent(); ?>
 
-            <hr />
-            
-            <div class="copyright">
-                &copy;<?= date('Y') ?> Ivan Mišák | <?= _l('Version') . ' ' . APP_VERSION ?> 
-            </div>
+            <!-- footer and copyright -->
+            <?php if( !Template::$FULL_VIEW ): ?>
+                <hr />
+
+                <div class="copyright">
+                    &copy;<?= date('Y') ?> Ivan Mišák | <?= _l('Version') . ' ' . APP_VERSION ?> 
+                </div>
+            <?php endif; ?>
             
         <?php if( !Template::$FULL_VIEW ): ?></div><?php endif; ?>
 

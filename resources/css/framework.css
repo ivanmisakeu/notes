@@ -305,6 +305,9 @@ textarea.error{
     border: 1px solid #f00;
     box-shadow: 0px 0px 3px 0px #f00;
 }
+.modal{
+    background: rgba(0,0,0,0.2);
+}
 label.required::after{
     content: ' *';
     color: #f00;

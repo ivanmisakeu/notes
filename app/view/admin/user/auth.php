@@ -1,5 +1,5 @@
 
-<div class="sign-in-wrapper">
+<div class="sign-in-wrapper sign-in-wrapper-admin">
     
     <h1 class="m-t-0">
         <i class="fa fa-unlock-alt color" aria-hidden="true"></i>
@@ -23,7 +23,7 @@
         <input type="hidden" name="redirect_url" value="<?= ADMIN_URL ?>" />
 
         <button class="btn btn-primary">
-            <i class="fa fa-plus" aria-hidden="true"></i> <?= _l( 'Sign in' ) ?>
+            <i class="fa fa-key" aria-hidden="true"></i> <?= _l( 'Sign in' ) ?>
         </button>
 
     </form>

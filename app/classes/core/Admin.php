@@ -37,7 +37,6 @@ class Admin{
     public static function menuInit(){
         
         self::$MENU = array(
-            'tenant' => [ Lang::l('Lists') , 'fa-list-ul'],
             'user' => [ Lang::l('Users') , 'fa-user-o' ],
             'tools' => [ Lang::l('Tools') , 'fa-wrench']
         );

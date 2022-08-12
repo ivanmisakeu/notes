@@ -43,6 +43,64 @@ class User extends Core {
         Helper::redirect( APP_URL );
     }
 
+    public static function actionIndex_admin() {
+
+        Template::assign( 'users', self::getAll() );
+        Template::generate_admin( 'user/index' );
+    }
+    
+    public static function actionAdd_admin(){
+        
+        Template::setPageTitle( Lang::l( 'Add new user' ) );
+        Template::generate_admin( 'user/add' );
+    }
+    
+    public static function actionEdit_admin(){
+        
+        if( !isset(Router::$ROUTES[2]) ){
+            
+            Helper::flash_set( Lang::l('User not found') , Helper::FLASH_DANGER );
+            Helper::redirect( ADMIN_URL . '/user' );
+        }
+        
+        $user = User::get( Router::$ROUTES[2] );
+        
+        if( !$user ){
+            
+            Helper::flash_set( Lang::l('User not found') , Helper::FLASH_DANGER );
+            Helper::redirect( ADMIN_URL . '/user' );
+        }
+        
+        Template::setPageTitle( Lang::l( 'Edit user' ) . ' ' . $user['name'] );
+        Template::assign( 'user' , $user);
+        Template::generate_admin( 'user/edit' );
+    }
+
+    public static function actionAuth_admin() {
+
+        // redirect user to homepage if is signed in
+        if( self::$CURRENT_USER ){
+            
+            ucfirst( Router::DEFAULT_ADMIN_CONTROLLER )::actionIndex_admin();
+            return;
+        }
+        
+        Template::$FULL_VIEW = true;
+
+        Template::setPageTitle( Lang::l( 'Sign in' ) );
+        Template::generate_admin( 'user/auth' );
+    }
+
+    public static function actionLogout_admin() {
+
+        if( isset($_SESSION['token'])) {
+            unset( $_SESSION['token'] );
+        }
+        
+        Helper::flash_set( Lang::l('You were signed out') );
+        Helper::redirect( ADMIN_URL );
+    }
+    
     /* ------- ** DATABASE FUNCTIONS ** ------- */
 
     /**
@@ -300,8 +358,8 @@ class User extends Core {
             
             Helper::redirect( ( defined('ADMIN_URL') ? ADMIN_URL : APP_URL ) . '/user/auth' );
         }
-        else if( $admin_required && self::$CURRENT_USER['admin'] != self::USER_ADMIN ){
-            
+        else if( self::$CURRENT_USER && $admin_required && self::$CURRENT_USER['admin'] != self::USER_ADMIN ){
+
             Helper::redirect( ( defined('ADMIN_URL') ? ADMIN_URL : APP_URL ) . '/user/auth' );
         }
         else if( self::$CURRENT_USER && Router::$PATH == 'user/auth' ){

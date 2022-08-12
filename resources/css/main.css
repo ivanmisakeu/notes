@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import './framework.css';
 @import './auth.css';
+@import './admin.css';
 
 :root{
     --color: #398439;
@@ -10,6 +11,9 @@ html,body{
     font-family: 'Roboto', sans-serif;
 }
 .color{
+    color: var(--color);
+}
+a {
     color: var(--color);
 }
 .main-container{

@@ -66,9 +66,12 @@ class Router {
 
         // basic tenant routing.. 
         
-        // check if user is signed in
-        User::checkLogged( false );
-            
+        
+        if( !defined( 'ADMIN_DIR') ){
+            // check if user is signed in
+            User::checkLogged( false );
+        }
+        
         if ( isset( self::$ROUTES[ 0 ] ) && !defined( 'ADMIN_DIR' ) ) {
             
             // do the magic work powerfull wizard..
@@ -97,7 +100,7 @@ class Router {
 
             // check if user is signed in
             User::checkLogged( true );
-            
+
             // initialize admin menu
             Admin::menuInit();
 

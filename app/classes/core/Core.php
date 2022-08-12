@@ -20,6 +20,24 @@ class Core {
         return APP::$DB->query($sql)->fetch();
     }
 
+    public static function _getAll( bool $only_active = true , string $TABLE_NAME  ){
+        
+        $sql = '
+            SELECT 
+                * 
+            FROM ' . $TABLE_NAME . ' ';
+        
+        if( $only_active ){
+            
+            $sql .= 'WHERE deleted = 0 ';
+        }
+        
+        $sql .= 'ORDER BY id ASC';
+        
+        return APP::$DB->query($sql)->fetchAll();
+            
+    }
+    
     public static function insert( array $data , string $TABLE_NAME ) {
 
         $data = array_merge(

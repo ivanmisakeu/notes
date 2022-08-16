@@ -1,4 +1,8 @@
 
+<?php if( User::$CURRENT_USER ): ?>
+    <?php Template::render('@includes/new_note'); ?>
+<?php endif ?>
+
 <?php Helper::flash_show(); ?>
 
 <script src="<?= APP_URL ?>/resources/js/jquery-2.2.4.min.js"></script>

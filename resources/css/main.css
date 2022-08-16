@@ -17,7 +17,7 @@ a {
     color: var(--color);
 }
 .main-container{
-    padding: 20px;
+    padding: 0px;
 }
 .main-container input,
 .main-container button,
@@ -44,4 +44,36 @@ a {
     position: relative;
     top: 7px;
     border-radius: 5px;
+}
+.copyright{
+    font-size: 11px;
+    color: #999;
+    margin-top: -10px;
+    padding: 0px 15px;
+}
+
+/* --- new note --- **/
+#new-note-btn{
+    text-decoration: none;
+    color: #fff;
+    background: #5cb85c;
+    display: block;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    font-size: 22px;
+    border-radius: 16px;
+    box-shadow: var(--color) 0px 0px 5px 0px;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+#new-note-btn:hover{
+    background: var(--color);
+    transition: background .5s;
+}
+#new-note-btn i{
+    position: relative;
+    top: 2px;
 }

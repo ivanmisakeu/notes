@@ -7,7 +7,7 @@
         <?= Template::include( 'header' ) ?>
         
         <?php if( !Template::$FULL_VIEW ): ?><div class="main-container"><?php endif; ?>
-
+            
             <!-- main content -->
             <?php Template::renderHTMLContent(); ?>
 

@@ -328,11 +328,6 @@ label.required::after{
 .modal-content{
     border-radius: 0px !important;
 }
-.copyright{
-    font-size: 11px;
-    color: #999;
-    margin-top: -10px;
-}
 .big{
     font-size: 1.2em;
 }

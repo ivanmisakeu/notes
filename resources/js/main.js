@@ -237,6 +237,23 @@ var _app = {
                 }
             });
 
+            /* new note auto modal */
+            $(document).on('click','#new-note-btn',function(e){
+                
+                e.preventDefault();
+                _app.modals.addNewNoteModal();
+            })
+        },
+        
+        /** 
+         * Add new note modal
+         * 
+         * @returns {Boolean}
+         */
+        addNewNoteModal : function(){
+            
+            $('#newNoteModal').show()
+            return false;
         },
          
     },

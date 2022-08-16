@@ -14,7 +14,9 @@ class Notes extends Core {
     /* ------- ** TEMPLATE FUNCTIONS ** ------- */
 
     public static function actionIndex() {
-
+        
+        /** @note Not used for now
+        
         Template::setPageTitle( Lang::l( 'My notes' ) );
         
         Template::assign( 'notes' , self::getAll( true , self::TABLE_NAME ) );
@@ -22,7 +24,15 @@ class Notes extends Core {
         Template::assign( 'tags' , NoteTags::getAll( true , NoteTags::TABLE_NAME ) );
         
         Template::generate_front( 'user/auth' );
-        
+        */
+    }
+    
+    /* ------- ** TEMPLATE FUNCTIONS ** ------- */
+
+    public static function actionAdd() {
+
+        Template::setPageTitle( Lang::l( 'Add new note' ) );
+        Template::generate_front( 'notes/add' );
     }
     
     /**

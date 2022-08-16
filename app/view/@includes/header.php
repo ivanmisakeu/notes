@@ -7,7 +7,7 @@
         </a>
     </div>
     
-    <a href="<?= ADMIN_URL ?>" class="logo-wrapper">
+    <a href="<?= APP_URL ?>" class="logo-wrapper">
         <div class="logo"></div> <?= _l( 'Notes' ) ?>
     </a>
 </div>

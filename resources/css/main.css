@@ -77,3 +77,9 @@ a {
     position: relative;
     top: 2px;
 }
+
+/* --- quill js custom css --- */
+#quill-editor-container,
+#toolbar-container{
+    border: 0px !important;
+}

@@ -315,6 +315,29 @@ var _app = {
 
 };
 
+var _quill = {
+    
+    el: '#quill-editor-container',
+    
+    editor: null,
+    
+    options : {
+        debug: false,
+        modules: {
+            toolbar: '#toolbar-container'
+        },
+        placeholder: _app.lang.l('Write your note..'),
+        readOnly: false,
+        theme: 'snow'
+    },
+
+    init : function(){
+        
+        _quill.editor = new Quill( _quill.el , _quill.options );
+    }
+    
+}
+
 $(function () {
 
     /* 
@@ -323,4 +346,8 @@ $(function () {
      */
     _app.init();
 
+    /**
+     * Quill JS editor for notes
+     */
+    _quill.init();
 })

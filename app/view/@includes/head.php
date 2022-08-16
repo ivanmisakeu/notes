@@ -12,4 +12,9 @@
 
 <link rel="stylesheet" href="<?= APP_URL ?>/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?= APP_URL ?>/resources/css/font-awesome.css">
+
+<link href="//cdn.quilljs.com/1.2.3/quill.core.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.2.3/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.2.3/quill.bubble.css" rel="stylesheet">
+
 <link rel="stylesheet" href="<?= APP_URL ?>/resources/css/main.css<?= Helper::res_timestamp( 'css/main.css' ); ?>">

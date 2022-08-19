@@ -98,7 +98,7 @@
 .admin-menu-wrapper ul li i{
     min-width: 20px;
 }
-.admin-menu-wrapper ul li a{
+.main-container.admin-container .admin-menu-wrapper ul li a{
     color: #000;
     text-decoration: none;
     display: block;

@@ -30,6 +30,9 @@ class Template{
     /** @var string */
     public static $HTML_CONTENT;
     
+    /** @var array */
+    public static $MENU = array(); 
+    
     /**
      * Assign variable to template
      * 
@@ -188,4 +191,16 @@ class Template{
         echo self::$HTML_CONTENT;
     }
     
+    /* ------- ** OTHER FUNCTIONS ** ------- */
+    
+    public static function menuInit(){
+        
+        self::$MENU = array(
+            'notes' => [ 
+                'name' => Lang::l('Add new'), 
+                'icon' => 'fa-plus', 
+                'method' => 'add' 
+            ]
+        );
+    }
 }

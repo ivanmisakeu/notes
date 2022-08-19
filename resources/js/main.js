@@ -238,7 +238,7 @@ var _app = {
             });
 
             /* new note auto modal */
-            $(document).on('click','#new-note-btn',function(e){
+            $(document).on('click','#new-note-btn,#menuitem-notes-add',function(e){
                 
                 e.preventDefault();
                 _app.modals.addNewNoteModal();

@@ -74,6 +74,9 @@ class Router {
         
         if ( isset( self::$ROUTES[ 0 ] ) && !defined( 'ADMIN_DIR' ) ) {
             
+            // init sidebar menu
+            Template::menuInit();
+            
             // do the magic work powerfull wizard..
             if ( count( self::$ROUTES ) >= 2  &&
                     method_exists( ucfirst( self::$ROUTES[ 0 ] ), 'action' . ucfirst( self::$ROUTES[ 1 ] ) ) ) {
@@ -91,6 +94,9 @@ class Router {
             }
         }
         else if( !isset( self::$ROUTES[ 0 ] )  && !defined( 'ADMIN_DIR' ) ){
+            
+            // init sidebar menu
+            Template::menuInit();
             
             ucfirst( self::DEFAULT_FRONT_CONTROLLER )::actionIndex();
         }

@@ -26,6 +26,19 @@ a {
 .main-container .btn{
     border-radius: 0px;
 }
+.main-container.main-container-basic{
+    max-width: 100%;
+    width: 100%;
+    margin: 0px auto;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    /*min-height: 100vh;*/
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex: 0 0 100%;
+}
 .form-control:focus {
     border-color: #469c7a;
     outline: 0;
@@ -51,7 +64,12 @@ a {
     margin-top: -10px;
     padding: 0px 15px;
 }
-
+.copyright-wrapper{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
 /* --- new note --- **/
 #new-note-btn{
     text-decoration: none;
@@ -82,4 +100,46 @@ a {
 #quill-editor-container,
 #toolbar-container{
     border: 0px !important;
+}
+
+/* --- sidebar --- */
+.page-menu-wrapper{
+    background: #eee;
+    min-height: 100vh;
+    padding: 15px 0px;
+    max-width: 180px;
+    width: 100%;
+}
+.page-menu-wrapper{
+    padding: 15px;
+    width: 100%;
+}
+.page-menu-wrapper ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+.page-menu-wrapper ul li{
+    list-style-type: none;
+}
+.page-menu-wrapper ul li i{
+    min-width: 20px;
+    color: var(--color);
+}
+.page-menu-wrapper ul li a{
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 3px 0px;
+}
+.page-menu-wrapper ul li:hover a{
+    color: var(--color);
+}
+.page-menu-wrapper ul li.bt-1{
+    border-top: 1px solid #ccc;
+}
+.page-content-wrapper{
+    padding: 15px;
+    width: 100%;
+    position: relative;
 }

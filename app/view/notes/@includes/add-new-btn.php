@@ -3,7 +3,7 @@
     <i class="fa fa-plus" aria-hidden="true"></i>
 </a>
 
-<div  id="newNoteModal" class="modal" tabindex="-1" role="dialog">
+<div id="newNoteModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
            

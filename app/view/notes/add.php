@@ -1,7 +1,9 @@
 
-dsadsa
+<h1 class="">
+    <i class="fa fa-clipboard color" aria-hidden="true"></i>
+    <?= _l( 'New note' ) ?>
+</h1>
 
-<div id="quill-editor">
-    <?php Template::render('@includes/quill-toolbar'); ?>
-    <div id="quill-editor-container"></div>
-</div>
+<p>&nbsp;</p>
+
+<?php Template::render('notes/@includes/form'); ?>

@@ -1,6 +1,6 @@
 
 <?php if( User::$CURRENT_USER ): ?>
-    <?php Template::render('@includes/new-note-btn'); ?>
+    <?php Template::render('notes/@includes/add-new-btn'); ?>
 <?php endif ?>
 
 <?php Helper::flash_show(); ?>

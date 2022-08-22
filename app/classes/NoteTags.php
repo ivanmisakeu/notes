@@ -6,11 +6,12 @@ if ( !defined( 'APP_VERSION' ) ) {
 
 class NoteTags extends Core {
 
-    const TABLE_NAME = 'note_tags';
-    const TABLE_REL_NAME = 'note_tag_rels';
+    const TABLE_NAME        = 'note_tags';
+    const TABLE_REL_NAME    = 'note_tag_rels';
+    const TEMPLATE_FOLDER   = 'note-tags';
     
-    const NOTE_TAG_DELETED = 1;
-    const NOTE_TAG_ACTIVE = 0; // not deleted
+    const NOTE_TAG_DELETED  = 1;
+    const NOTE_TAG_ACTIVE   = 0; // not deleted
     
     /**
      * All tags for given note

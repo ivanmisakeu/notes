@@ -65,7 +65,6 @@ class Router {
         }
 
         // converting dashes into first uppercae 
-        
         foreach( Router::$ROUTES as &$route ){
             $route = str_replace('-', ' ', $route );
             $route = ucwords( $route );
@@ -74,7 +73,6 @@ class Router {
         }
         
         // basic tenant routing.. 
-        
         if( !defined( 'ADMIN_DIR') ){
             // check if user is signed in
             User::checkLogged( false );

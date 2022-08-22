@@ -200,6 +200,10 @@ class Template{
                 'name' => Lang::l('Add new'), 
                 'icon' => 'fa-plus', 
                 'method' => 'add' 
+            ],
+            'note-categories' => [
+                'name' => Lang::l('Categories'),
+                'icon' => 'fa-folder-open-o'
             ]
         );
     }

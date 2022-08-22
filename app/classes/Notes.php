@@ -6,10 +6,11 @@ if ( !defined( 'APP_VERSION' ) ) {
 
 class Notes extends Core {
 
-    const TABLE_NAME = 'notes';
- 
-    const NOTE_DELETED = 1;
-    const NOTE_ACTIVE = 0; // not deleted
+    const TABLE_NAME        = 'notes';
+    const TEMPLATE_FOLDER   = 'notes';
+    
+    const NOTE_DELETED      = 1;
+    const NOTE_ACTIVE       = 0; // not deleted
     
     /* ------- ** TEMPLATE FUNCTIONS ** ------- */
 
@@ -32,7 +33,7 @@ class Notes extends Core {
     public static function actionAdd() {
 
         Template::setPageTitle( Lang::l( 'Add new note' ) );
-        Template::generate_front( 'notes/add' );
+        Template::generate_front( self::TEMPLATE_FOLDER . '/add' );
     }
     
     /**
@@ -52,6 +53,8 @@ class Notes extends Core {
         return $notes;
     }
     
+    /* ------- ** DATABASE FUNCTIONS ** ------- */
+    
     /**
      * Fill note element with related data
      * 
@@ -62,6 +65,30 @@ class Notes extends Core {
         $note['category'] = NoteCategories::_get( $note['id_note_category'] , NoteCategories::TABLE_NAME );
         $note['tags'] = NoteTags::getTagsForNote( $note['id'] );
         
+    }
+    
+    /**
+     * Get all notes related to category
+     * 
+     * @param int $id_category
+     * @param bool $active_only (opt.)
+     * @return array
+     */
+    public static function getAllNotesByCategory( int $id_category, bool $active_only = true ){
+        
+        $sql = '
+            SELECT 
+                * 
+            FROM ' . self::TABLE_NAME . ' 
+            WHERE id_note_category = ' . (int) $id_category;
+        
+        if( $active_only ){
+            $sql .= ' AND deleted = ' . (int) self::NOTE_ACTIVE; 
+        }
+        
+        $sql .= ' ORDER BY name';
+        
+        return APP::$DB->query($sql)->fetchAll();
     }
     
 }

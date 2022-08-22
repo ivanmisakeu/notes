@@ -255,6 +255,29 @@ var _app = {
             $('#newNoteModal').show()
             return false;
         },
+        
+        /**
+         * Remove category modal
+         * 
+         * @param {int} id
+         * @param {string} name
+         * @returns {Boolean}
+         */
+        removeCategoryModal : function( id , name ){
+          
+            var _el = $('#removeCategoryModal');
+            
+            $('.modal-header p' , _el ).text( '"' + name + '"' );
+            $('[name=id_note_category]', _el ).val( id );
+            
+            // prepare delete form
+            _showCategoriesToTransfer( id );
+            _showHideTransferCategoriesSelect();
+        
+            _el.show();
+          
+            return false;
+        },
          
     },
       

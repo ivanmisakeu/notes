@@ -31,12 +31,12 @@
                 </td>
                 <td  class="nowrap">
                     
-                    <a class="btn btn-xs btn-warning m-r-sm" href="<?= APP_URL . '/note-categories/edit/' . $category['id'] ?>">
+                    <a class="btn btn-xs btn-primary m-r-sm" href="<?= APP_URL . '/note-categories/edit/' . $category['id'] ?>">
                         <i class="fa fa-pencil" aria-hidden="true"></i> <?= _l('Edit') ?>
                     </a>
                     
                     <a onClick="
-                        return _app.modals.removeCategory(<?= $category['id'] ?>,
+                        return _app.modals.removeCategoryModal(<?= $category['id'] ?>,
                             '<?= $category['name'] ?>');" 
                         class="btn btn-xs btn-danger" 
                         href="#">

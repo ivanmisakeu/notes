@@ -64,8 +64,16 @@ class Router {
             }
         }
 
-        // basic tenant routing.. 
+        // converting dashes into first uppercae 
         
+        foreach( Router::$ROUTES as &$route ){
+            $route = str_replace('-', ' ', $route );
+            $route = ucwords( $route );
+            $route = str_replace(' ', '', $route );
+            $route = lcfirst( $route ); 
+        }
+        
+        // basic tenant routing.. 
         
         if( !defined( 'ADMIN_DIR') ){
             // check if user is signed in

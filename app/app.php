@@ -24,6 +24,9 @@ class App {
             define( 'ADMIN_URL' , APP_URL . '/' . ADMIN_FOLDER_NAME );
         }
         
+        // dset efault timezone
+        date_default_timezone_set( APP_TIMEZONE );
+        
         // autoload php classes
         foreach ( self::AUTOLOAD_DIRECTORIES as $autoload_dir ) {
             $this->autoload( $autoload_dir );

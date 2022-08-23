@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
            
-            <form action="<?= APP_URL ?>/doUser/removeCategory/" method="post">
+            <form action="<?= APP_URL ?>/doNoteCategories/removeCategory/" method="post">
                 
                 <?= Helper::captcha_get(); ?>
                 

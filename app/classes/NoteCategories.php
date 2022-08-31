@@ -25,6 +25,26 @@ class NoteCategories extends Core {
         
     }
     
+    public static function actionAdd(){
+        
+        Template::generate_front( self::TEMPLATE_FOLDER . '/add' ); 
+        
+    }
+    
+    public static function actionEdit(){
+        
+        if( !isset(Router::$ROUTES[2]) || 
+                !$note_category = NoteCategories::_get( Router::$ROUTES[2] , self::TABLE_NAME ) ){
+            
+            Helper::flash_set( Lang::l('Category not found') , Helper::FLASH_DANGER );
+            Helper::redirect( ADMIN_URL . '/note-categories' );
+        }
+        
+        Template::assign( 'category' , $note_category );
+        Template::generate_front( self::TEMPLATE_FOLDER . '/edit' ); 
+        
+    }
+    
     /* ------- ** DATABASE FUNCTIONS ** ------- */
     
     
@@ -91,6 +111,34 @@ class NoteCategories extends Core {
         }
         
         return null;
+        
+    }
+    
+    public static function editCategory(){
+        
+        Helper::captcha_verify();
+        
+        if( !isset($_POST['id_note_category']) || !isset($_POST['name']) ){
+            
+            Helper::redirect_error_home();
+        }
+        
+        $note_category = self::_get( $_POST['id_note_category'], self::TABLE_NAME);
+        if( !$note_category ){
+            
+            Helper::flash_set( Lang::l('Note category does not exist'), Helper::FLASH_DANGER );
+            Helper::redirect_error_home();
+        }
+        
+        App::$DB->query('UPDATE ' . self::TABLE_NAME . ' SET %a', array(
+            'name' => $_POST['name'],
+            'description' => isset($_POST['description']) ? $_POST['description'] : '',
+            'updated' => Core::now()
+        ));
+        
+        Helper::flash_set( Lang::l('Category has been updated') );
+        Helper::redirect_to_posted_url();
+        
         
     }
     

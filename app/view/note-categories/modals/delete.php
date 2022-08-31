@@ -50,10 +50,10 @@
                 </div>
                 
                 <div class="modal-footer">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-success">
                         <i class="fa fa-check" aria-hidden="true"></i> <?= _l( 'Yes, delete' ) ?>
                     </button>
-                    <button type="button" class="btn btn-success pull-left" onClick="$('#removeCategoryModal').hide();">
+                    <button type="button" class="btn btn-danger pull-left" onClick="$('#removeCategoryModal').hide();">
                         <i class="fa fa-times" aria-hidden="true"></i> <?= _l( 'No' ) ?>
                     </button>
                 </div>

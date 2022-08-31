@@ -20,7 +20,7 @@ class Core {
         return APP::$DB->query($sql)->fetch();
     }
 
-    public static function _getAll( bool $only_active = true , string $TABLE_NAME  ){
+    public static function _getAll( bool $only_active = true , string $TABLE_NAME , $order_by = 'id ASC'  ){
         
         $sql = '
             SELECT 
@@ -32,7 +32,7 @@ class Core {
             $sql .= 'WHERE deleted = 0 ';
         }
         
-        $sql .= 'ORDER BY id ASC';
+        $sql .= 'ORDER BY ' . $order_by;
         
         return APP::$DB->query($sql)->fetchAll();
             

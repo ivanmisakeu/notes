@@ -357,6 +357,23 @@ var _quill = {
     init : function(){
         
         _quill.editor = new Quill( _quill.el , _quill.options );
+        
+        // copy content from editor to field to submit on every fucking change!
+        _quill.editor.on('text-change', function(delta, source) {
+            
+            _quill.copyContent();
+        })
+        
+        // copy content even if only form has been submited
+        $(document).on('submit','#note-submit-form',function(e){
+            
+            _quill.copyContent();
+        });
+    },
+    
+    copyContent: function(){
+        
+        $('textarea[name=content]').html( $('#quill-editor-container .ql-editor').html() );
     }
     
 }

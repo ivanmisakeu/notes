@@ -91,4 +91,27 @@ class Notes extends Core {
         return APP::$DB->query($sql)->fetchAll();
     }
     
+    /* ------- ** OTHER FUNCTIONS ** ------- */
+    
+    public static function addNewNote(){
+
+        Helper::captcha_verify();
+        
+        if( !isset($_POST['title']) || !isset($_POST['id_note_category']) ){
+            
+            Helper::redirect_error_home();
+        }
+  
+        parent::insert( [
+                'name' => $_POST[ 'title' ],
+                'id_note_category' => $_POST[ 'id_note_category' ],
+                'content' => $_POST['content'],
+                'updated' => Core::now()
+        ], self::TABLE_NAME );
+        
+        Helper::flash_set( Lang::l( 'Note has been created' ) );
+        Helper::redirect( APP_URL . '/notes/edit/' . APP::$DB->getInsertId() );
+            
+    }
+    
 }

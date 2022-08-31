@@ -398,3 +398,8 @@ label.required::after{
 .text-bold{
     font-weight: 700;
 }
+textarea.form-control{
+    resize: vertical;
+    min-height: 120px;
+    height: 120px;
+}

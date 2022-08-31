@@ -114,6 +114,25 @@ class NoteCategories extends Core {
         
     }
     
+    public static function addCategory(){
+        
+        Helper::captcha_verify();
+        
+        if( !isset($_POST['name']) ){
+            
+            Helper::redirect_error_home();
+        }
+        
+        parent::insert( [
+            'name' => $_POST[ 'name' ],
+            'description' => $_POST[ 'description' ],
+            'updated' => Core::now()
+        ], self::TABLE_NAME );
+        
+        Helper::flash_set( Lang::l('Category has been created') );
+        Helper::redirect_to_posted_url();
+    }
+    
     public static function editCategory(){
         
         Helper::captcha_verify();
@@ -130,7 +149,7 @@ class NoteCategories extends Core {
             Helper::redirect_error_home();
         }
         
-        App::$DB->query('UPDATE ' . self::TABLE_NAME . ' SET %a', array(
+        App::$DB->query('UPDATE ' . self::TABLE_NAME . ' SET %a WHERE id=' . (int) $_POST['id_note_category'], array(
             'name' => $_POST['name'],
             'description' => isset($_POST['description']) ? $_POST['description'] : '',
             'updated' => Core::now()
@@ -138,7 +157,6 @@ class NoteCategories extends Core {
         
         Helper::flash_set( Lang::l('Category has been updated') );
         Helper::redirect_to_posted_url();
-        
         
     }
     

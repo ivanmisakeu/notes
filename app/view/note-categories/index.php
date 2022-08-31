@@ -1,5 +1,5 @@
 
-<a href="<?= ADMIN_URL . '/note-categories/add' ?>" class="pull-right btn btn-primary btn-sm m-t-sm">
+<a href="<?= APP_URL . '/note-categories/add' ?>" class="pull-right btn btn-primary btn-sm m-t-sm">
     <i class="fa fa-plus" aria-hidden="true"></i> <?= _l('Add') ?>
 </a>
 
